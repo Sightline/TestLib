@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1084</width>
+    <height>650</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>500</width>
+    <height>0</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>OpenGL Testing Application</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow{
+background-color: #004;
+}
+
+QWidget{
+background-color: #004;
+color: #fff;
+}
+
+QToolBar{
+background-color: #004;
+padding: 5px;
+}
+
+QMenuBar{
+background-color: #004;
+color: #fff;
+}
+
+QMenuBar::item{
+background-color: #004;
+color: #fff;
+}
+
+QPushButton{
+background-color: qlineargradient(spread:pad, x1:0.67, y1:1, x2:0.653864, y2:0, stop:0 rgba(170, 0, 0, 255), stop:1 rgba(255, 170, 127, 255));
+color: rgb(255, 255, 255);
+border-width: 2px;
+border-color: #000;
+border-style: solid;
+border-radius: 10;
+padding: 2px;
+font-size: 10px;
+font-weight: bold;
+padding-left: 5px;
+padding-right: 5px;
+min-width: 50px;
+max-width: 50px;
+min-height: 13px;
+max-height: 13px;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <property name="minimumSize">
+    <size>
+     <width>1084</width>
+     <height>0</height>
+    </size>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QSplitter" name="splitter">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="MyOpenGLWidget" name="openGLWidget">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>500</width>
+         <height>300</height>
+        </size>
+       </property>
+      </widget>
+      <widget class="QGroupBox" name="groupBox">
+       <property name="minimumSize">
+        <size>
+         <width>300</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="title">
+        <string>Animated Plots</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QCustomPlot" name="customPlot1" native="true">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCustomPlot" name="customPlot2" native="true">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QGroupBox" name="groupBox_2">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>100</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>150</height>
+       </size>
+      </property>
+      <property name="title">
+       <string>Simulation...</string>
+      </property>
+      <widget class="QPushButton" name="pushButton">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>64</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>64</width>
+         <height>21</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>64</width>
+         <height>21</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>INITIALISE</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButtonAnimate">
+       <property name="geometry">
+        <rect>
+         <x>110</x>
+         <y>30</y>
+         <width>64</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>RENDER</string>
+       </property>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1084</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionNew"/>
+    <addaction name="actionOpen"/>
+    <addaction name="actionSave"/>
+    <addaction name="actionSave_As"/>
+   </widget>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>Scene</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuVignette">
+    <property name="title">
+     <string>Vignette</string>
+    </property>
+    <widget class="QMenu" name="menuOperations_Research">
+     <property name="title">
+      <string>Operations Research</string>
+     </property>
+     <addaction name="actionSearch"/>
+     <addaction name="actionSearch_and_Engage"/>
+     <addaction name="separator"/>
+     <addaction name="actionLogistics"/>
+    </widget>
+    <widget class="QMenu" name="menuInverse_Simulation">
+     <property name="title">
+      <string>Inverse Simulation</string>
+     </property>
+     <addaction name="actionPerform_New"/>
+     <addaction name="actionPlay_Existing"/>
+    </widget>
+    <widget class="QMenu" name="menuController_Design">
+     <property name="title">
+      <string>Controller Design</string>
+     </property>
+     <addaction name="actionPrimary_Vehicle"/>
+     <addaction name="actionSwarm_Control"/>
+     <addaction name="actionGoal_Directed"/>
+    </widget>
+    <widget class="QMenu" name="menuUAV_Simulation">
+     <property name="title">
+      <string>UAV Simulation</string>
+     </property>
+     <addaction name="actionWaypoint_Guidance"/>
+     <addaction name="actionGoal_Directed_Behaviour"/>
+    </widget>
+    <widget class="QMenu" name="menuFlight_Testing">
+     <property name="title">
+      <string>Flight Testing</string>
+     </property>
+     <addaction name="actionSystem_Identification"/>
+     <addaction name="actionDynamic_Similarity"/>
+    </widget>
+    <addaction name="menuOperations_Research"/>
+    <addaction name="menuInverse_Simulation"/>
+    <addaction name="actionFlight_Mechanics"/>
+    <addaction name="actionSurvivability"/>
+    <addaction name="actionSurveillance"/>
+    <addaction name="separator"/>
+    <addaction name="menuFlight_Testing"/>
+    <addaction name="separator"/>
+    <addaction name="menuUAV_Simulation"/>
+    <addaction name="menuController_Design"/>
+   </widget>
+   <widget class="QMenu" name="menuAnalysis">
+    <property name="title">
+     <string>Analysis</string>
+    </property>
+    <addaction name="actionTime_Series"/>
+    <addaction name="actionOptimisation"/>
+    <addaction name="separator"/>
+   </widget>
+   <widget class="QMenu" name="menuWindows">
+    <property name="title">
+     <string>Windows</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionAbout"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuEdit"/>
+   <addaction name="menuVignette"/>
+   <addaction name="menuAnalysis"/>
+   <addaction name="menuWindows"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionNew"/>
+   <addaction name="actionOpen"/>
+   <addaction name="actionSave"/>
+   <addaction name="separator"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionNew">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/icons/Icons/new.png</normaloff>:/icons/Icons/new.png</iconset>
+   </property>
+   <property name="text">
+    <string>New</string>
+   </property>
+   <property name="toolTip">
+    <string>Create a New Scene</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+  </action>
+  <action name="actionOpen">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/icons/Icons/Open.png</normaloff>:/icons/Icons/Open.png</iconset>
+   </property>
+   <property name="text">
+    <string>Open</string>
+   </property>
+   <property name="toolTip">
+    <string>Open an Existing Scene XML File</string>
+   </property>
+  </action>
+  <action name="actionSave">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/icons/Icons/Save-64.png</normaloff>:/icons/Icons/Save-64.png</iconset>
+   </property>
+   <property name="text">
+    <string>Save</string>
+   </property>
+  </action>
+  <action name="actionSave_As">
+   <property name="text">
+    <string>Save As...</string>
+   </property>
+  </action>
+  <action name="actionFlight_Mechanics">
+   <property name="text">
+    <string>Flight Mechanics</string>
+   </property>
+  </action>
+  <action name="actionSearch">
+   <property name="text">
+    <string>Search and Identify</string>
+   </property>
+  </action>
+  <action name="actionSearch_and_Engage">
+   <property name="text">
+    <string>Search and Engage</string>
+   </property>
+  </action>
+  <action name="actionSurvivability">
+   <property name="text">
+    <string>Survivability</string>
+   </property>
+  </action>
+  <action name="actionSurveillance">
+   <property name="text">
+    <string>Surveillance</string>
+   </property>
+  </action>
+  <action name="actionPerform_New">
+   <property name="text">
+    <string>Perform New</string>
+   </property>
+  </action>
+  <action name="actionPlay_Existing">
+   <property name="text">
+    <string>Play Existing</string>
+   </property>
+  </action>
+  <action name="actionTime_Series">
+   <property name="text">
+    <string>Time Series</string>
+   </property>
+  </action>
+  <action name="actionOptimisation">
+   <property name="text">
+    <string>Optimisation</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+  <action name="actionPrimary_Vehicle">
+   <property name="text">
+    <string>Primary Vehicle</string>
+   </property>
+  </action>
+  <action name="actionSwarm_Control">
+   <property name="text">
+    <string>Swarm Control</string>
+   </property>
+  </action>
+  <action name="actionGoal_Directed">
+   <property name="text">
+    <string>Goal-Directed</string>
+   </property>
+  </action>
+  <action name="actionWaypoint_Guidance">
+   <property name="text">
+    <string>Waypoint Guidance</string>
+   </property>
+  </action>
+  <action name="actionGoal_Directed_Behaviour">
+   <property name="text">
+    <string>Goal Directed Behaviour</string>
+   </property>
+  </action>
+  <action name="actionSystem_Identification">
+   <property name="text">
+    <string>System Identification</string>
+   </property>
+  </action>
+  <action name="actionDynamic_Similarity">
+   <property name="text">
+    <string>Dynamic Similarity</string>
+   </property>
+  </action>
+  <action name="actionLogistics">
+   <property name="text">
+    <string>Logistics</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>MyOpenGLWidget</class>
+   <extends>QOpenGLWidget</extends>
+   <header>myopenglwidget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QCustomPlot</class>
+   <extends>QWidget</extends>
+   <header>qcustomplot.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
+ <connections/>
+</ui>
